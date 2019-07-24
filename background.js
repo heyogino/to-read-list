@@ -4,6 +4,23 @@
 
 'use strict';
 
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.contextMenus.create({
+    id: "register",
+    title: "Register this page",
+    contexts: ["browser_action"],
+    type: "normal"
+  });
+
+});
+
+chrome.contextMenus.onClicked.addListener(function(info, tab) {
+  console.log('hoge');
+  if (info.menuItemId == "register") {
+    console.log(info);
+  }
+}); 
+
 chrome.browserAction.onClicked.addListener(function(tabs) {
   // background.js
   let storedUris = JSON.parse(localStorage.getItem('storedUris')) || {};
