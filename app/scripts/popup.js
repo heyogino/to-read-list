@@ -9,17 +9,21 @@ const DUMMY_URIS = {
     'https://qiita.com/nabepon/items/87bb3b4f1e7bfa342489': 'ReactやVueのJSXについて曖昧に理解する - Qiita'
 };
 window.onload = function() {
-    addLinkList(DUMMY_URIS);
+    let storedUriList = JSON.parse(localStorage.getItem('storedUris'));
+    // addLinkList(DUMMY_URIS);
+    addLinkList(storedUriList);
 };
 
 function addLinkList(uris) {
     let list = document.getElementById('read-list');
-    for (let uri in uris) {
+    for (let key in uris) {
+        let uri = uris[key].uri;
+        let title = uris[key].title;
         let anchor = document.createElement('a');
         let removeIcon = document.createElement('i');
         let button = document.createElement('button');
         anchor.href = uri;
-        anchor.innerHTML = uris[uri];
+        anchor.innerHTML = title;
         anchor.setAttribute('class', 'collection-item');
         anchor.addEventListener('click', function(e) {
             chrome.tabs.create({url: uri});
