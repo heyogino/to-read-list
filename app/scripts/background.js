@@ -8,25 +8,17 @@
 'use strict';
 
 chrome.runtime.onInstalled.addListener(() => {
-  // テストコード
-  const DUMMY_URIS = {
-    'https://qiita.com/howdy39/items/9ac0564da56246472fc5': 'Chrome 拡張機能 ー コンテキストメニュー(ContextType/ItemType）',
-  };
-  let storedUris = JSON.parse(localStorage.getItem('storedUris'));
-  
-  localStorage.setItem('storedUris', DUMMY_URIS);
   chrome.contextMenus.create({
     id: "register",
     title: "Register this page",
+    contexts: ["browser_action"],
     type: "normal"
   });
-
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId == "register") {
     let storedUris = JSON.parse(localStorage.getItem('storedUris'));
-    console.log(storedUris);
     console.log("Register this page!");
   }
 }); 
