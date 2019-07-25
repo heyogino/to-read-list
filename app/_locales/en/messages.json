@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "ToReadList",
+    "description": "The name of the application"
+  },
+  "appShortName": {
+    "message": "ToReadList",
+    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+  },
+  "appDescription": {
+    "message": "List of what to read later",
+    "description": "The description of the application"
+  },
+  "browserActionTitle": {
+    "message": "ToReadList",
+    "description": "The title of the browser action button"
+  }
+}

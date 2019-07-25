@@ -1,3 +1,6 @@
+// Enable chromereload by uncommenting this line:
+// import 'chromereload/devonly'
+
 const DUMMY_URIS = {
     'https://developer.mozilla.org/ja/docs/Web/API/GlobalEventHandlers/onload': 'window.onload',
     'https://qiita.com/sqrtxx/items/19fd2114430e9e1fb57f':'Chrome Extension を作って公開する',

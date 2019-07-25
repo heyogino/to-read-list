@@ -1,27 +1,37 @@
+// Enable chromereload by uncommenting this line:
+// import 'chromereload/devonly'
+
 // Copyright 2018 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 'use strict';
 
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(() => {
+  // テストコード
+  const DUMMY_URIS = {
+    'https://qiita.com/howdy39/items/9ac0564da56246472fc5': 'Chrome 拡張機能 ー コンテキストメニュー(ContextType/ItemType）',
+  };
+  let storedUris = JSON.parse(localStorage.getItem('storedUris'));
+  
+  localStorage.setItem('storedUris', DUMMY_URIS);
   chrome.contextMenus.create({
     id: "register",
     title: "Register this page",
-    contexts: ["browser_action"],
     type: "normal"
   });
 
 });
 
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
-  console.log('hoge');
+chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId == "register") {
-    console.log(info);
+    let storedUris = JSON.parse(localStorage.getItem('storedUris'));
+    console.log(storedUris);
+    console.log("Register this page!");
   }
 }); 
 
-chrome.browserAction.onClicked.addListener(function(tabs) {
+chrome.browserAction.onClicked.addListener(tabs => {
   // background.js
   let storedUris = JSON.parse(localStorage.getItem('storedUris')) || {};
   let title = document.getElementsByTagName('title');
