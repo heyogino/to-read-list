@@ -28,6 +28,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         "title": title
       };
       localStorage.setItem('storedUris', JSON.stringify(storedUris));
+      chrome.notifications.create({
+        type: 'basic',
+        iconUrl: '../images/icon-16.png',
+        title: 'ToReadList',
+        message: 'Done Registering!'
+      });
     });
   }
 }); 
