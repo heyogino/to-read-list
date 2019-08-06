@@ -7,13 +7,11 @@
 import xxhash from 'xxhash-wasm';
 'use strict';
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    id: "register",
-    title: "Register this page",
-    contexts: ["browser_action"],
-    type: "normal"
-  });
+chrome.contextMenus.create({
+  id: "register",
+  title: "Register this page",
+  contexts: ["browser_action"],
+  type: "normal"
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
